@@ -22,7 +22,7 @@ public class App
     	IDao<Long,Section> sectionDao = new SectionDao();
     	IDao<Long,Tag> tagDao = new TagDao();
     	IDao<Long,Fiche> ficheDao = new FicheDao();
-    	User user = new User("Moi");
+    	User user = new User("Moi","mail@adresse.com");
     	Fiche fich = new Fiche();
     	FicheAvecDeadline ficheAvecDeadline = new FicheAvecDeadline();
     	fich.setLieu("lieuTest");

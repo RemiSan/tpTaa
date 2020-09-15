@@ -13,12 +13,13 @@ public class User implements Serializable{
 
 	private int id;
 	
-	private String name;
-	
+	private String name, mail;
+
 	public User() {}
 	
-	public User(String name) {
+	public User(String name, String mail) {
 		this.name = name;
+		this.mail = mail;
 	}
 
 	@Id
@@ -39,9 +40,17 @@ public class User implements Serializable{
 		this.name = name;
 	}
 
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + "]";
+		return "User [id=" + id + ", name=" + name + ", mail=" + mail + "]";
 	}
 	
 	
