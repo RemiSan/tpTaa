@@ -3,20 +3,23 @@ package com.rviotty.tpjpa.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorValue("F")
 public class Fiche {
 	
 	private int id;
 	
 	private String title;
-	
-	private Date dateButoire;
 	
 	private User user;
 	
@@ -52,15 +55,8 @@ public class Fiche {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	public Date getDateButoire() {
-		return dateButoire;
-	}
-
-	public void setDateButoire(Date dateButoire) {
-		this.dateButoire = dateButoire;
-	}
-
+	
+	
 	@ManyToOne
 	public User getUser() {
 		return user;
@@ -122,7 +118,7 @@ public class Fiche {
 	
 	@Override
 	public String toString() {
-		return "Fiche [id=" + id + ", title=" + title + ", dateButoire=" + dateButoire + ", user=" + user
+		return "Fiche [id=" + id + ", title=" + title + ", user=" + user
 				+ ", estimatedTime=" + estimatedTime + ", tags=" + tags + ", lieu=" + lieu + ", url=" + url
 				+ ", noteExplicative=" + noteExplicative + ", section=" + section + "]";
 	}
