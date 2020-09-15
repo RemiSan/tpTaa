@@ -3,21 +3,25 @@ package com.rviotty.tpjpa;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rviotty.tpjpa.dao.FicheDao;
+import com.rviotty.tpjpa.dao.IDao;
+import com.rviotty.tpjpa.dao.SectionDao;
+import com.rviotty.tpjpa.dao.TagDao;
+import com.rviotty.tpjpa.dao.UserDao;
 import com.rviotty.tpjpa.entities.Fiche;
 import com.rviotty.tpjpa.entities.FicheAvecDeadline;
 import com.rviotty.tpjpa.entities.Section;
 import com.rviotty.tpjpa.entities.Tag;
 import com.rviotty.tpjpa.entities.User;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-    	Dao dao = new Dao();
+    	IDao<Long,User> userDao = new UserDao();
+    	IDao<Long,Section> sectionDao = new SectionDao();
+    	IDao<Long,Tag> tagDao = new TagDao();
+    	IDao<Long,Fiche> ficheDao = new FicheDao();
     	User user = new User("Moi");
     	Fiche fich = new Fiche();
     	FicheAvecDeadline ficheAvecDeadline = new FicheAvecDeadline();
@@ -34,24 +38,24 @@ public class App
     	List<Tag> tags = new ArrayList<Tag>();
     	Tag t1 = new Tag("tagtag");
     	Tag t2 = new Tag("testdetageheh");
-    	dao.addEntity(t1);
-    	dao.addEntity(t2);
+    	
     	tags.add(t1);
     	tags.add(t2);
     	fich.setTags(tags);
-    	dao.addEntity(user);
-    	dao.addEntity(sec);
-    	dao.addEntity(fich);
-    	dao.addEntity(ficheAvecDeadline);
-    	for (User u : dao.getUsers()) {
+    	tagDao.save(t1);
+    	tagDao.save(t2);
+    	userDao.save(user);
+    	sectionDao.save(sec);
+    	ficheDao.save(fich);
+    	ficheDao.save(ficheAvecDeadline);
+    	for (User u : userDao.findAll()) {
     		System.out.println(u.toString());
     	}
-    	for (Section s : dao.getSections()) {
+    	for (Section s : sectionDao.findAll()) {
     		System.out.println(s.toString());
     	}
-    	for (Fiche f : dao.getFiches()) {
+    	for (Fiche f : ficheDao.findAll()) {
     		System.out.println(f.toString());
     	}
-        dao.close();
     }
 }

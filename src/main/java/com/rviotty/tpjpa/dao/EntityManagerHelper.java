@@ -1,4 +1,4 @@
-package com.rviotty.tpjpa;
+package com.rviotty.tpjpa.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

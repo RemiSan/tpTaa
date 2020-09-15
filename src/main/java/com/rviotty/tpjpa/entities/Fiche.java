@@ -1,6 +1,6 @@
 package com.rviotty.tpjpa.entities;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
@@ -15,8 +15,10 @@ import javax.persistence.OneToMany;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("F")
-public class Fiche {
+public class Fiche implements Serializable{
 	
+	private static final long serialVersionUID = 9096491566260173254L;
+
 	private int id;
 	
 	private String title;
@@ -32,8 +34,7 @@ public class Fiche {
 	private String url;
 	
 	private String noteExplicative;
-	
-	@OneToMany
+
 	private Section section;
 
 	public Fiche() {}

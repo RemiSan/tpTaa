@@ -1,18 +1,15 @@
 package com.rviotty.tpjpa.entities;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("D")
 public class FicheAvecDeadline extends Fiche {
+
+	private static final long serialVersionUID = -7154391038264630642L;
 	
 	private Date dateButoire;
 

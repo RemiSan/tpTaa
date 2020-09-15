@@ -1,14 +1,15 @@
 package com.rviotty.tpjpa.entities;
 
-import java.util.Collection;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Section {
+public class Section implements Serializable{
+
+	private static final long serialVersionUID = -4612494095741324396L;
 
 	private int id;
 
